@@ -1,0 +1,10 @@
+.select-row{display:block;margin-top:8px}
+.select-row select{width:100%;min-height:34px;border:1px solid #dfe3d9;border-radius:5px;background:#fff;color:#45554a;padding:7px 9px;font:10px 'DM Sans',sans-serif;outline:none}
+.select-row select:focus-visible{border-color:#719179;box-shadow:0 0 0 2px #71917930}
+.quality-filter .check-row{display:flex;align-items:center;gap:8px;min-height:28px;font-size:10px;color:#58645c;cursor:pointer}
+.quality-filter input{accent-color:#174d3b}
+.quality-help{margin:3px 0 0 21px;color:#89948b;font-size:9px;line-height:1.5}
+.quality-pill{padding:4px 7px;border-radius:3px;font-size:8px;letter-spacing:.3px}
+.quality-good{background:#e6f1e8;color:#376849}
+.quality-review{background:#fff1dc;color:#8b6425}
+.status-warning{color:#f1c99c!important}

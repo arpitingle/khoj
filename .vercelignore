@@ -1,0 +1,12 @@
+.git
+.venv
+.index
+__pycache__
+deploy
+scripts/inspect_embeddings.py
+*.parquet
+*.sqlite*
+*.f32
+.DS_Store
+README.md
+SEMANTIC_SEARCH_SPIKE.md

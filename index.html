@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f6f2" />
+    <meta name="description" content="Find useful information across Indian government documents." />
+    <title>Khoj — Indian government documents, easier to find</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="semantic.css" />
+  <script src="runtime-config.js"></script>
+  <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Khoj home"><span class="brand-mark">ख</span><span>khoj<span class="brand-dot">.</span></span></a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a class="nav-active" href="#search">Explore</a>
+        <a href="#about">About the data</a>
+      </nav>
+      <a class="dataset-link" href="https://huggingface.co/datasets/ankitjh4/bharat-government-documents" target="_blank" rel="noreferrer">Open dataset <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="search">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> THE PUBLIC KNOWLEDGE INDEX</div>
+          <h1>Government information,<br /><em>within reach.</em></h1>
+          <p class="hero-subtitle">Find public information across Indian government documents. Ask in everyday language and follow each result back to its source.</p>
+        </div>
+        <div class="search-wrap">
+          <form id="search-form" class="search-box" role="search">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <label class="sr-only" for="query">Search government documents</label>
+            <input id="query" name="q" type="search" placeholder="Try “scholarships for first-generation students”" autocomplete="off" />
+            <button type="submit">Search <span aria-hidden="true">→</span></button>
+          </form>
+          <div class="search-meta"><span><span class="sparkle">✳</span> Semantic search powered by document embeddings</span><span>Sources linked at every step</span></div>
+          <div class="quick-searches" aria-label="Suggested searches">
+            <span>Try</span><button type="button" data-query="scholarship for students">student scholarships</button><button type="button" data-query="farmer crop insurance">crop insurance</button><button type="button" data-query="RTI application time limit">RTI timeline</button>
+          </div>
+        </div>
+        <div class="hero-stamp" aria-hidden="true"><span>सार्वजनिक</span><span>जानकारी</span><b>✳</b></div>
+      </section>
+
+      <section class="results-section" aria-labelledby="results-heading">
+        <div class="results-heading-row">
+          <div><div class="section-kicker">DISCOVER</div><h2 id="results-heading">Explore the collection</h2></div>
+          <div class="demo-label"><span></span> EMBEDDING SEARCH <i id="data-status">Checking index…</i></div>
+        </div>
+        <div class="results-layout">
+          <aside class="filters" aria-label="Filter results">
+            <div class="filter-head"><span>Refine results</span><button type="button" id="clear-filters">Clear all</button></div>
+            <div class="filter-group">
+              <h3>Topic</h3>
+              <label class="select-row" for="category-filter"><span class="sr-only">Filter by topic</span><select id="category-filter"><option value="">All topics</option></select></label>
+            </div>
+            <div class="filter-group source-filter">
+              <h3>State / jurisdiction</h3>
+              <label class="select-row" for="state-filter"><span class="sr-only">Filter by state or jurisdiction</span><select id="state-filter"><option value="">All jurisdictions</option></select></label>
+            </div>
+            <div class="filter-group quality-filter">
+              <h3>Result quality</h3>
+              <label class="check-row" for="include-review"><input type="checkbox" id="include-review" checked><span class="fake-check" aria-hidden="true"></span><span>Include review records</span></label>
+              <p class="quality-help">Included by default. Turn off to search only “good” records. Labels are automated, not a fact-check.</p>
+            </div>
+            <div class="filter-note"><span>ⓘ</span><p>Topics come from dataset labels. Check the original source for current details.</p></div>
+          </aside>
+
+          <div class="results-main">
+            <div class="results-toolbar"><p id="result-count" aria-live="polite">Search the collection to see matching documents</p><span class="sort-label">Ordered by semantic similarity</span></div>
+            <div id="result-list" class="result-list"></div>
+            <div id="no-results" class="no-results" hidden><span>⌕</span><h3>No matching documents</h3><p>Try a broader phrase or clear one of the filters.</p><button type="button" id="reset-search">Reset search</button></div>
+            <div id="search-error" class="no-results" hidden><span>↻</span><h3>Search is temporarily unavailable</h3><p>The semantic search service is not ready. Try again after building the local index.</p><button type="button" id="retry-search">Try again</button></div>
+            <div class="more-row"><button type="button" id="load-more" hidden>Show more results <span>↓</span></button><p>Results are ranked against precomputed EmbeddingGemma vectors.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-strip" id="about">
+        <div class="about-icon">✳</div><div><div class="section-kicker">BUILT FROM PUBLIC SOURCES</div><p>Khoj is a search experience for public information. Documents remain the property of their original publishers; this interface helps you find and verify them.</p></div><a href="https://huggingface.co/datasets/ankitjh4/bharat-government-documents" target="_blank" rel="noreferrer">Read dataset notes <span>↗</span></a>
+      </section>
+    </main>
+    <footer><a class="brand footer-brand" href="#top"><span class="brand-mark">ख</span><span>khoj<span class="brand-dot">.</span></span></a><span>Public information should be easier to find.</span><span class="footer-right">A community prototype <span>✳</span></span></footer>
+  </body>
+</html>

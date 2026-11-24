@@ -1,0 +1,4 @@
+huggingface_hub>=0.30
+fsspec>=2024.2
+pyarrow>=20
+numpy>=1.26

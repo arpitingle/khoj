@@ -1,0 +1,24 @@
+[Unit]
+Description=Khoj Bharat government document semantic search API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=indgov
+Group=indgov
+WorkingDirectory=/opt/indgov
+Environment=INDGOV_INDEX_DIR=/opt/indgov/.index
+Environment=HF_HOME=/var/cache/indgov/huggingface
+EnvironmentFile=-/etc/indgov.env
+ExecStart=/opt/indgov/.venv/bin/uvicorn server:app --host 127.0.0.1 --port 8000 --workers 1
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=300
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/opt/indgov/.index /var/cache/indgov
+
+[Install]
+WantedBy=multi-user.target
