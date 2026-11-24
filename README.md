@@ -1,6 +1,8 @@
 # Khoj
 
-Khoj is a local semantic-search prototype for the Bharat government documents collection. It uses the precomputed `documents-embedded.parquet` vectors, stores document metadata and text in SQLite, and runs cosine search over a memory-mapped float32 matrix.
+Khoj is a semantic-search prototype for the Bharat government documents collection. It uses the precomputed `documents-embedded.parquet` vectors, stores document metadata and text in SQLite, and runs cosine search over a memory-mapped float32 matrix.
+
+The current demo API runs on the maintainer's Mac through a temporary tunnel, so it is not a stable public service. To try Khoj yourself, follow the local setup below.
 
 ## Requirements
 
@@ -39,7 +41,11 @@ curl -X POST http://127.0.0.1:8001/api/search \
 
 ## Current limits
 
-- This is a local prototype; it is not deployed and has no multi-user queue or rate limiting.
+- The API is a local prototype with no multi-user queue or rate limiting. The temporary demo tunnel can stop or change URL at any time.
 - Query embedding requires the matching EmbeddingGemma model. Model access terms and model download are separate from access to the dataset.
 - Search is exhaustive cosine scoring over a memory-mapped matrix. It should be benchmarked locally before choosing a free host; the query model and memory/disk needs may exceed small free-tier limits.
 - The embedding table is self-contained for results: it has `document_id`, `title`, `text`, and `url` beside each 768-dimensional vector. Source links still point to original publishers.
+
+## License and data rights
+
+The Khoj application code in this repository is licensed under the MIT License; see [`LICENSE`](LICENSE). This license does not cover the Bharat government documents dataset, source documents, or the EmbeddingGemma model. Their respective publishers' terms apply. The dataset card does not grant a blanket reuse license, so review its current terms before downloading or redistributing its contents.
